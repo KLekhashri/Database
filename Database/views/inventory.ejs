@@ -1,0 +1,38 @@
+<html lang="en">
+    <%- include('./partials/head.ejs') %> <%- include('./partials/header.ejs')%>
+
+        <h1>Books Inventory</h1>
+        
+        <form action="/inventory" method="POST">
+            <input type="text" name="keyword" placeholder="Search by title">
+            <input type="submit" value="Search">
+        </form>
+
+        <button onclick="sortTable(3)">Sort by title</button>
+            
+        <form action="/inventory" method="GET">
+            <br>
+            <table border="1" id="table">
+                <tr>
+                    <th>id</th>
+                    <th>Quantity</th>
+                    <th>Book_id</th>
+                    <th>Book title</th>
+                </tr>
+                <% if (inventory.length == 0) { %>
+                    <p>No book title named <%=search%></p>
+                <% } else { %>
+                    <% for(var i = 0; i < inventory.length; i++) { %>
+                    <tr>
+                        <td><%=inventory[i].id%></td>
+                        <td><%=inventory[i].quantity%></td>
+                        <td><%=inventory[i].book_id%></td>
+                        <td><%=title[i].title%></td>
+                    </tr>
+                    <% } %>
+                <% } %>
+            </table>
+        </form>
+        <%- include('./partials/footer.ejs') %>
+    </body>
+</html>

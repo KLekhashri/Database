@@ -1,0 +1,45 @@
+<html lang="en">
+    <%- include('./partials/head.ejs') %> <%- include('./partials/header.ejs')%>
+
+        <h1>Books Cover</h1>
+        
+        <form action="/cover" method="POST">
+            <input type="text" name="keyword" placeholder="Search by title">
+            <input type="submit" value="Search">
+        </form>
+
+        <button onclick="sortTable(4)">Sort by title</button>
+            
+        <form action="/cover" method="GET">
+            <br>
+            <table border="1" id="table">
+                <tr>
+                    <th>id</th>
+                    <th>URL</th>
+                    <th>Image</th>
+                    <th>Book_id</th>
+                    <th>Book title</th>
+                </tr>
+                <% if (cover.length == 0) { %>
+                    <p>No book title named <%=search%></p>
+                <% } else { %>
+                    <% for(var i = 0; i < cover.length; i++) { %>
+                    <tr>
+                        <td><%=cover[i].id%></td>
+                        <td>
+                            <a href="<%=cover[i].url%>"><%=cover[i].url%></a>
+                        </td>
+                        <td class="imgContainer">
+                            <img src="<%=cover[i].image%>" class="bookImg">
+                            <%=cover[i].image%>
+                        </td>
+                        <td><%=cover[i].book_id%></td>
+                        <td><%=title[i].title%></td>
+                    </tr>
+                    <% } %>
+                <% } %>
+            </table>
+        </form>
+        <%- include('./partials/footer.ejs') %>
+    </body>
+</html>

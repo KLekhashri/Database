@@ -1,0 +1,54 @@
+<html lang="en">
+    <%- include('./partials/head.ejs') %> <%- include('./partials/header.ejs')%>
+
+        <h1>Books</h1>
+
+        <form action="/book" method="POST">
+            <input type="text" name="keyword" placeholder="Search by title">
+            <input type="submit" value="Search">
+        </form>
+
+        <button onclick="sortTable(2)">Sort by title</button>
+        
+        <form action="/book" method="GET">
+            <br>
+            <table border="1" id="table">
+                <tr>
+                    <th>id</th>
+                    <th>ISBN</th>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th>Price</th>
+                    <th>Rating</th>
+                    <th>Length</th>
+                    <th>Author</th>
+                    <th>Publisher</th>
+                    <th>Location</th>
+                    <th>Category</th>
+                    <th>Format</th>
+                </tr>
+                <% if (book.length == 0) { %>
+                    <p>No book named: <%=search%></p>
+                <% } else { %>
+                    <% for(var i = 0; i < book.length; i++){ %>
+                    <tr>
+                        <td><%=book[i].id%></td>
+                        <td><%=book[i].ISBN%></td>
+                        <td><%=book[i].title%></td>
+                        <td><%=book[i].year%></td>
+                        <td><%=book[i].price%></td>
+                        <td><%=book[i].rating%></td>
+                        <td><%=book[i].length%></td>
+                        <td><%=book[i].author_id%></td>
+                        <td><%=book[i].publisher_id%></td>
+                        <td><%=book[i].location_id%></td>
+                        <td><%=book[i].category_id%></td>
+                        <td><%=book[i].format_id%></td>
+                    </tr>
+                    <% } %>
+                <% } %>
+            </table>
+        </form>
+        <%- include('./partials/footer.ejs') %>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<html lang="en">
+    <%- include('./partials/head.ejs') %> <%- include('./partials/header.ejs')%>
+
+        <h1>Books Category</h1>
+        
+        <form action="/category" method="POST">
+            <input type="text" name="keyword" placeholder="Search by category">
+            <input type="submit" value="Search">
+        </form>
+
+        <button onclick="sortTable(1)">Sort by category</button>
+            
+        <form action="/category" method="GET">
+            <br>
+            <table border="1" id="table">
+                <tr>
+                    <th>id</th>
+                    <th>Category</th>
+                </tr>
+                <% if (category.length == 0) { %>
+                    <p>No category named <%=search%></p>
+                <% } else { %>
+                    <% for(var i = 0; i < category.length; i++) { %>
+                    <tr>
+                        <td><%=category[i].id%></td>
+                        <td><%=category[i].category%></td>
+                    </tr>
+                    <% } %>
+                <% } %>
+            </table>
+        </form>
+        <%- include('./partials/footer.ejs') %>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<html lang="en">
+    <%- include('./partials/head.ejs') %> <%- include('./partials/header.ejs')%>
+
+        <h1>Books Format</h1>
+        
+        <form action="/format" method="POST">
+            <input type="text" name="keyword" placeholder="Search by format">
+            <input type="submit" value="Search">
+        </form>
+
+        <button onclick="sortTable(1)">Sort by format</button>
+        
+            
+        <form action="/format" method="GET">
+            <br/>
+            <table border="1" id="table">
+                <tr>
+                    <th>id</th>
+                    <th>Format</th>
+                </tr>
+                <% if (format.length == 0) { %>
+                    <p>No format named <%=search%></p>
+                <% } else { %>
+                    <% for(var i = 0; i < format.length; i++) { %>
+                    <tr>
+                        <td><%=format[i].id%></td>
+                        <td><%=format[i].format%></td>
+                    </tr>
+                    <% } %>
+                <% } %>
+            </table>
+        </form>
+        <%- include('./partials/footer.ejs') %>
+    </body>
+</html>

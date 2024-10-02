@@ -1,0 +1,37 @@
+<html lang="en">
+    <%- include('./partials/head.ejs') %> <%- include('./partials/header.ejs')%>
+
+        <h1>Books' Published Location</h1>
+        
+        <form action="/location" method="POST">
+            <input type="text" name="keyword" placeholder="Search by published location">
+            <input type="submit" value="Search">
+        </form>
+
+        <button onclick="sortTable(1)">Sort by city</button>
+        <button onclick="sortTable(2)">Sort by country</button>
+            
+        <form action="/location" method="GET">
+            <br>
+            <table border="1" id="table">
+                <tr>
+                    <th>id</th>
+                    <th>City</th>
+                    <th>Country</th>
+                </tr>
+                <% if (location.length == 0) { %>
+                    <p>No location named <%=search%></p>
+                <% } else { %>
+                    <% for(var i = 0; i < location.length; i++) { %>
+                    <tr>
+                        <td><%=location[i].id%></td>
+                        <td><%=location[i].city%></td>
+                        <td><%=location[i].country%></td>
+                    </tr>
+                    <% } %>
+                <% } %>
+            </table>
+        </form>
+        <%- include('./partials/footer.ejs') %>
+    </body>
+</html>

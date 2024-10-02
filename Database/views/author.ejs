@@ -1,0 +1,34 @@
+<html lang="en">
+    <%- include('./partials/head.ejs') %> <%- include('./partials/header.ejs')%>
+
+        <h1>Authors</h1>
+
+        <form action="/author" method="POST">
+            <input type="text" name="keyword" placeholder="Search by author">
+            <input type="submit" value="Search">
+        </form>
+
+        <button onclick="sortTable(1)">Sort by author</button>
+        
+        <form action="/author" method="GET">
+            <br>
+            <table border="1" id="table">
+                <tr>
+                    <th>id</th>
+                    <th>Author</th>
+                </tr>
+                <% if (author.length == 0) { %>
+                    <p>No author named: <%=search%></p>
+                <% } else { %>
+                    <% for(var i = 0; i < author.length; i++) { %>
+                    <tr>
+                        <td><%=author[i].id%></td>
+                        <td><%=author[i].author%></td>
+                    </tr>
+                    <% } %>
+                <% } %>
+            </table>
+        </form>
+        <%- include('./partials/footer.ejs') %>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+table {
+  width: 100%;
+}
+
+th,
+td {
+  text-align: center;
+}
+
+.imgContainer {
+  display: inline-flex;
+  align-items: center;
+}
+
+.bookImg {
+  width: 150px;
+}
